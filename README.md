@@ -5,18 +5,20 @@ A simple SVG parser for iOS
 
 Supported shapes/features:
 
-• Circle
-• Ellipse
-• Rectangle
-• Line
-• Polyline
-• Bezier Path
+Shape Primitives:
+- Circle
+- Ellipse
+- Rectangle
+- Line
+- Polyline
+- Bezier Path
 
-• Fill Color (in hex "#xxxxxx" format)
-• Stroke Color (in hex "#xxxxxx" format)
-• Stroke Weight
-• Line Dashes
-• Line Join/Cap (Butt/Round/Miter)
+Shape Appearance:
+- Fill Color (in hex "#xxxxxx" format)
+- Stroke Color (in hex "#xxxxxx" format)
+- Stroke Weight
+- Line Dashes
+- Line Join/Cap (Butt/Round/Miter)
 
 To use:
 
