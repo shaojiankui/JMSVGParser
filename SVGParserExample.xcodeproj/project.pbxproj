@@ -39,12 +39,12 @@
 		63D00ED517F9219C0003643B /* JMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JMViewController.h; sourceTree = "<group>"; };
 		63D00ED617F9219C0003643B /* JMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JMViewController.m; sourceTree = "<group>"; };
 		63D00ED817F9219C0003643B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		63D00EF517F922810003643B /* JMStyledPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMStyledPath.h; sourceTree = "<group>"; };
-		63D00EF617F922810003643B /* JMStyledPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMStyledPath.m; sourceTree = "<group>"; };
-		63D00EF717F922810003643B /* JMStyledPathFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMStyledPathFactory.h; sourceTree = "<group>"; };
-		63D00EF817F922810003643B /* JMStyledPathFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMStyledPathFactory.m; sourceTree = "<group>"; };
-		63D00EF917F922810003643B /* JMSVGParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMSVGParser.h; sourceTree = "<group>"; };
-		63D00EFA17F922810003643B /* JMSVGParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMSVGParser.m; sourceTree = "<group>"; };
+		63D00EF517F922810003643B /* JMStyledPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JMStyledPath.h; path = JMSVGParser/JMStyledPath.h; sourceTree = "<group>"; };
+		63D00EF617F922810003643B /* JMStyledPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JMStyledPath.m; path = JMSVGParser/JMStyledPath.m; sourceTree = "<group>"; };
+		63D00EF717F922810003643B /* JMStyledPathFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JMStyledPathFactory.h; path = JMSVGParser/JMStyledPathFactory.h; sourceTree = "<group>"; };
+		63D00EF817F922810003643B /* JMStyledPathFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JMStyledPathFactory.m; path = JMSVGParser/JMStyledPathFactory.m; sourceTree = "<group>"; };
+		63D00EF917F922810003643B /* JMSVGParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JMSVGParser.h; path = JMSVGParser/JMSVGParser.h; sourceTree = "<group>"; };
+		63D00EFA17F922810003643B /* JMSVGParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JMSVGParser.m; path = JMSVGParser/JMSVGParser.m; sourceTree = "<group>"; };
 		63D00EFF17F923EB0003643B /* awesome_tiger.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = awesome_tiger.svg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
