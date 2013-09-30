@@ -1,29 +1,45 @@
-//
-//  JMViewController.m
-//  SVGParserExample
-//
-//  Created by Jeff Menter on 9/29/13.
-//  Copyright (c) 2013 Jeff Menter. All rights reserved.
-//
 
 #import "JMViewController.h"
+#import "JMSVGParser.h"
+#import "JMStyledPath.h"
 
+@interface JMExampleView ()
+@property (nonatomic) CGFloat scale;
+@property (nonatomic) NSArray *shapes;
+@end
+
+@implementation JMExampleView
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if (!(self = [super initWithCoder:aDecoder])) return nil;
+    
+    self.shapes = [JMSVGParser parseFileNamed:@"awesome_tiger"];
+    self.scale = 1.f;
+    return self;
+}
+
+- (void)drawRect:(CGRect)rect
+{
+    CGContextScaleCTM(UIGraphicsGetCurrentContext(), self.scale, self.scale);
+
+    for (JMStyledPath *styledPath in self.shapes) {
+        [styledPath drawStyledPath];
+    }
+}
+
+@end
 @interface JMViewController ()
+@property (strong, nonatomic) IBOutlet JMExampleView *exampleView;
 
 @end
 
 @implementation JMViewController
 
-- (void)viewDidLoad
+- (IBAction)scaleSliderValueChanged:(UISlider *)sender
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self.exampleView.scale = sender.value;
+    [self.exampleView setNeedsDisplay];
 }
 
 @end
