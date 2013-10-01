@@ -20,10 +20,15 @@
                                     <action selector="scaleSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="qG2-Ft-Aja"/>
                                 </connections>
                             </slider>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="xGT-xI-mhF">
+                                <rect key="frame" x="699" y="932" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="antialiasSwitch" destination="xGT-xI-mhF" id="Liv-Hv-Euh"/>
                         <outlet property="exampleView" destination="8bC-Xf-vdC" id="Yeb-sr-gJ7"/>
                     </connections>
                 </viewController>

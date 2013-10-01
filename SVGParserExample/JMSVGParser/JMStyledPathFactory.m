@@ -196,15 +196,7 @@ CGPoint CGPointSubtractPoints(CGPoint point1, CGPoint point2)
                              [attributes floatForKey:@"y"],
                              [attributes floatForKey:@"width"],
                              [attributes floatForKey:@"height"]);
-    JMStyledPath *styledPath = [JMStyledPath styledPathWithBezierPath:[UIBezierPath bezierPathWithRect:rect]
-                                                            fillColor:[attributes fillColorForKey:@"fill"]
-                                                          strokeColor:[attributes strokeColorForKey:@"stroke"]
-                                                         strokeWeight:[attributes strokeWeightForKey:@"stroke-width"]
-                                                            dashArray:[attributes dashArrayForKey:@"stroke-dasharray"]
-                                                           miterLimit:[attributes miterLimitForKey:@"stroke-miterlimit"]
-                                                         lineCapStyle:[attributes lineCapForKey:@"stroke-linecap"]
-                                                        lineJoinStyle:[attributes lineJoinForKey:@"stroke-linejoin"]];
-    return styledPath;
+    return [self createStyledPath:[UIBezierPath bezierPathWithRect:rect] withAttributes:attributes];
 }
 
 - (JMStyledPath *)ellipseWithAttributes:(NSDictionary *)attributes;
@@ -213,15 +205,7 @@ CGPoint CGPointSubtractPoints(CGPoint point1, CGPoint point2)
                              [attributes floatForKey:@"cy"] - [attributes floatForKey:@"ry"],
                              [attributes floatForKey:@"rx"] * 2.f,
                              [attributes floatForKey:@"ry"] * 2.f);
-    JMStyledPath *styledPath = [JMStyledPath styledPathWithBezierPath:[UIBezierPath bezierPathWithOvalInRect:rect]
-                                                            fillColor:[attributes fillColorForKey:@"fill"]
-                                                          strokeColor:[attributes strokeColorForKey:@"stroke"]
-                                                         strokeWeight:[attributes strokeWeightForKey:@"stroke-width"]
-                                                            dashArray:[attributes dashArrayForKey:@"stroke-dasharray"]
-                                                           miterLimit:[attributes miterLimitForKey:@"stroke-miterlimit"]
-                                                         lineCapStyle:[attributes lineCapForKey:@"stroke-linecap"]
-                                                        lineJoinStyle:[attributes lineJoinForKey:@"stroke-linejoin"]];
-    return styledPath;
+    return [self createStyledPath:[UIBezierPath bezierPathWithOvalInRect:rect] withAttributes:attributes];
 }
 
 - (JMStyledPath *)circleWithAttributes:(NSDictionary *)attributes;
@@ -237,16 +221,7 @@ CGPoint CGPointSubtractPoints(CGPoint point1, CGPoint point2)
     NSString *commandString = attributes[@"d"];
     NSArray *commandList = [self commandListForCommandString:commandString];
     UIBezierPath *commandListPath = [self bezierPathFromCommandList:commandList];
-    JMStyledPath *styledPath = [JMStyledPath styledPathWithBezierPath:commandListPath
-                                                            fillColor:[attributes fillColorForKey:@"fill"]
-                                                          strokeColor:[attributes strokeColorForKey:@"stroke"]
-                                                         strokeWeight:[attributes strokeWeightForKey:@"stroke-width"]
-                                                            dashArray:[attributes dashArrayForKey:@"stroke-dasharray"]
-                                                           miterLimit:[attributes miterLimitForKey:@"stroke-miterlimit"]
-                                                         lineCapStyle:[attributes lineCapForKey:@"stroke-linecap"]
-                                                        lineJoinStyle:[attributes lineJoinForKey:@"stroke-linejoin"]];
-
-    return styledPath;
+    return [self createStyledPath:commandListPath withAttributes:attributes];
 }
 
 - (JMStyledPath *)polylineWithAttributes:(NSDictionary *)attributes;
@@ -254,15 +229,7 @@ CGPoint CGPointSubtractPoints(CGPoint point1, CGPoint point2)
     NSString *commandString = attributes[@"points"];
     NSArray *commandList = [self commandListForPolylineString:commandString];
     UIBezierPath *commandListPath = [self bezierPathFromCommandList:commandList];
-    JMStyledPath *styledPath = [JMStyledPath styledPathWithBezierPath:commandListPath
-                                                            fillColor:[attributes fillColorForKey:@"fill"]
-                                                          strokeColor:[attributes strokeColorForKey:@"stroke"]
-                                                         strokeWeight:[attributes strokeWeightForKey:@"stroke-width"]
-                                                            dashArray:[attributes dashArrayForKey:@"stroke-dasharray"]
-                                                           miterLimit:[attributes miterLimitForKey:@"stroke-miterlimit"]
-                                                         lineCapStyle:[attributes lineCapForKey:@"stroke-linecap"]
-                                                        lineJoinStyle:[attributes lineJoinForKey:@"stroke-linejoin"]];
-    return styledPath;
+    return [self createStyledPath:commandListPath withAttributes:attributes];
 }
 
 - (JMStyledPath *)lineWithAttributes:(NSDictionary *)attributes;
@@ -271,16 +238,22 @@ CGPoint CGPointSubtractPoints(CGPoint point1, CGPoint point2)
     [path moveToPoint:CGPointMake([attributes floatForKey:@"x1"], [attributes floatForKey:@"y1"])];
     [path addLineToPoint:CGPointMake([attributes floatForKey:@"x2"], [attributes floatForKey:@"y2"])];
 
-    JMStyledPath *styledPath = [JMStyledPath styledPathWithBezierPath:path
-                                                            fillColor:[attributes fillColorForKey:@"fill"]
-                                                          strokeColor:[attributes strokeColorForKey:@"stroke"]
-                                                         strokeWeight:[attributes strokeWeightForKey:@"stroke-width"]
-                                                            dashArray:[attributes dashArrayForKey:@"stroke-dasharray"]
-                                                           miterLimit:[attributes miterLimitForKey:@"stroke-miterlimit"]
-                                                         lineCapStyle:[attributes lineCapForKey:@"stroke-linecap"]
-                                                        lineJoinStyle:[attributes lineJoinForKey:@"stroke-linejoin"]];
-    return styledPath;
+    return [self createStyledPath:path withAttributes:attributes];
 }
+
+- (JMStyledPath *)createStyledPath:(UIBezierPath *)path withAttributes:(NSDictionary *)attributes;
+{
+    return [JMStyledPath styledPathWithBezierPath:path
+                                        fillColor:[attributes fillColorForKey:@"fill"]
+                                      strokeColor:[attributes strokeColorForKey:@"stroke"]
+                                     strokeWeight:[attributes strokeWeightForKey:@"stroke-width"]
+                                        dashArray:[attributes dashArrayForKey:@"stroke-dasharray"]
+                                       miterLimit:[attributes miterLimitForKey:@"stroke-miterlimit"]
+                                     lineCapStyle:[attributes lineCapForKey:@"stroke-linecap"]
+                                    lineJoinStyle:[attributes lineJoinForKey:@"stroke-linejoin"]];
+}
+
+#pragma mark - Command List Methods
 
 - (NSArray *)commandListForCommandString:(NSString *)commandString;
 {
@@ -323,33 +296,32 @@ CGPoint CGPointSubtractPoints(CGPoint point1, CGPoint point2)
 
 - (UIBezierPath *)bezierPathFromCommandList:(NSArray *)commandList;
 {
-    UIBezierPath *path = [UIBezierPath bezierPath];
+    UIBezierPath *path = UIBezierPath.new;
     for (NSString *command in commandList) {
         NSScanner *commandScanner = [NSScanner scannerWithString:command];
-        if ([@[@"M", @"m"] containsObject:commandScanner.currentCharacter]) {
+        if ([@[@"M", @"m"] containsObject:commandScanner.currentCharacter])
             [self addMoveToPointFromCommandScanner:commandScanner toPath:path];
-        }
-        else if ([@[@"L", @"l"] containsObject:commandScanner.currentCharacter]) {
+        
+        else if ([@[@"L", @"l"] containsObject:commandScanner.currentCharacter])
             [self addLineToPointFromCommandScanner:commandScanner toPath:path];
-        }
-        else if ([@[@"H", @"h"] containsObject:commandScanner.currentCharacter]) {
+        
+        else if ([@[@"H", @"h"] containsObject:commandScanner.currentCharacter])
             [self addHorizontalLineToPointFromCommandScanner:commandScanner toPath:path];
-        }
-        else if ([@[@"V", @"v"] containsObject:commandScanner.currentCharacter]) {
+        
+        else if ([@[@"V", @"v"] containsObject:commandScanner.currentCharacter])
             [self addVerticalLineToPointFromCommandScanner:commandScanner toPath:path];
-        }
-        else if ([@[@"C", @"c"] containsObject:commandScanner.currentCharacter]) {
+        
+        else if ([@[@"C", @"c"] containsObject:commandScanner.currentCharacter])
             [self addCurveToPointFromCommandScanner:commandScanner toPath:path];
-        }
-        else if ([@[@"S", @"s"] containsObject:commandScanner.currentCharacter]) {
+        
+        else if ([@[@"S", @"s"] containsObject:commandScanner.currentCharacter])
             [self addSmoothCurveToPointFromCommandScanner:commandScanner toPath:path];
-        }
-        else if ([@[@"Q", @"q"] containsObject:commandScanner.currentCharacter]) {
+        
+        else if ([@[@"Q", @"q"] containsObject:commandScanner.currentCharacter])
             [self addQuadCurveToPointFromCommandScanner:commandScanner toPath:path];
-        }
-        else if ([@[@"Z", @"z"] containsObject:commandScanner.currentCharacter]) {
+        
+        else if ([@[@"Z", @"z"] containsObject:commandScanner.currentCharacter])
             [path closePath];
-        }
     }
     return path;
 }

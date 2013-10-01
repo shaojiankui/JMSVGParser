@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		638A3DC517F9280E00ABD616 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 638A3DC417F9280E00ABD616 /* Main_iPhone.storyboard */; };
 		638A3DC717F9282B00ABD616 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 638A3DC617F9282B00ABD616 /* Main_iPad.storyboard */; };
+		639C87AE17FA2EF9009D45A8 /* JMExampleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 639C87AD17FA2EF9009D45A8 /* JMExampleView.m */; };
 		63D00EBE17F9219C0003643B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D00EBD17F9219C0003643B /* Foundation.framework */; };
 		63D00EC017F9219C0003643B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D00EBF17F9219C0003643B /* CoreGraphics.framework */; };
 		63D00EC217F9219C0003643B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D00EC117F9219C0003643B /* UIKit.framework */; };
@@ -26,6 +27,8 @@
 /* Begin PBXFileReference section */
 		638A3DC417F9280E00ABD616 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
 		638A3DC617F9282B00ABD616 /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
+		639C87AC17FA2EF9009D45A8 /* JMExampleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMExampleView.h; sourceTree = "<group>"; };
+		639C87AD17FA2EF9009D45A8 /* JMExampleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMExampleView.m; sourceTree = "<group>"; };
 		63D00EBA17F9219C0003643B /* SVGParserExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SVGParserExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63D00EBD17F9219C0003643B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		63D00EBF17F9219C0003643B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -96,10 +99,12 @@
 				63D00EFF17F923EB0003643B /* awesome_tiger.svg */,
 				63D00ECC17F9219C0003643B /* JMAppDelegate.h */,
 				63D00ECD17F9219C0003643B /* JMAppDelegate.m */,
-				638A3DC417F9280E00ABD616 /* Main_iPhone.storyboard */,
-				638A3DC617F9282B00ABD616 /* Main_iPad.storyboard */,
+				639C87AC17FA2EF9009D45A8 /* JMExampleView.h */,
+				639C87AD17FA2EF9009D45A8 /* JMExampleView.m */,
 				63D00ED517F9219C0003643B /* JMViewController.h */,
 				63D00ED617F9219C0003643B /* JMViewController.m */,
+				638A3DC417F9280E00ABD616 /* Main_iPhone.storyboard */,
+				638A3DC617F9282B00ABD616 /* Main_iPad.storyboard */,
 				63D00ED817F9219C0003643B /* Images.xcassets */,
 				63D00EC417F9219C0003643B /* Supporting Files */,
 			);
@@ -159,6 +164,11 @@
 				CLASSPREFIX = JM;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Jeff Menter";
+				TargetAttributes = {
+					63D00EB917F9219C0003643B = {
+						DevelopmentTeam = H8KMXW4VV4;
+					};
+				};
 			};
 			buildConfigurationList = 63D00EB517F9219C0003643B /* Build configuration list for PBXProject "SVGParserExample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -203,6 +213,7 @@
 				63D00ECA17F9219C0003643B /* main.m in Sources */,
 				63D00ED717F9219C0003643B /* JMViewController.m in Sources */,
 				63D00EFB17F922810003643B /* JMStyledPath.m in Sources */,
+				639C87AE17FA2EF9009D45A8 /* JMExampleView.m in Sources */,
 				63D00ECE17F9219C0003643B /* JMAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,7 +236,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -238,7 +249,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jeff Menter (T6K44Z57X5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jeff Menter (T6K44Z57X5)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -256,6 +268,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "0966D005-A16C-4B27-85EF-AB91BE686B41";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -265,7 +278,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -278,7 +291,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jeff Menter (T6K44Z57X5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jeff Menter (T6K44Z57X5)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -289,6 +303,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PROVISIONING_PROFILE = "0966D005-A16C-4B27-85EF-AB91BE686B41";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -300,10 +315,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SVGParserExample/SVGParserExample-Prefix.pch";
 				INFOPLIST_FILE = "SVGParserExample/SVGParserExample-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -313,10 +331,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SVGParserExample/SVGParserExample-Prefix.pch";
 				INFOPLIST_FILE = "SVGParserExample/SVGParserExample-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

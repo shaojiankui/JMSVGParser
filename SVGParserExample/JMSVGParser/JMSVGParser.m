@@ -31,11 +31,11 @@
 
 - (BOOL)parse;
 {
-    BOOL success = [self.parser parse];
+    BOOL didSucceed = [self.parser parse];
     if (self.parser.parserError)
         NSLog(@"parserError: %@", self.parser.parserError);
 
-    return success;
+    return didSucceed;
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict
