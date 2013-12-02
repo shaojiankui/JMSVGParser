@@ -17,6 +17,6 @@
 @interface JMStyledPathFactory : NSObject
 
 // Generates a JMStyledPath based on the elementName and attributes from the JMSVGParser.
-+ (JMStyledPath *)styledPathWithElementName:(NSString *)elementName attributes:(NSDictionary *)attributes;
++ (JMStyledPath *)styledPathFromElementName:(NSString *)elementName attributes:(NSDictionary *)attributes;
 
 @end

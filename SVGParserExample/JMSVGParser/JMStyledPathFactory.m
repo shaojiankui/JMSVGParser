@@ -1,3 +1,14 @@
+/*
+ 
+ Copyright (c) 2013 Jeff Menter
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ 
+ */
 
 #import "JMStyledPathFactory.h"
 #import "JMStyledPath.h"
@@ -164,27 +175,27 @@ CGPoint CGPointSubtractPoints(CGPoint point1, CGPoint point2)
 
 @implementation JMStyledPathFactory
 
-+ (JMStyledPath *)styledPathWithElementName:(NSString *)elementName attributes:(NSDictionary *)attributes;
++ (JMStyledPath *)styledPathFromElementName:(NSString *)elementName attributes:(NSDictionary *)attributes;
 {
     JMStyledPathFactory *factory = JMStyledPathFactory.new;
-    if ([elementName isEqualToString:@"circle"]) {
+    if ([elementName isEqualToString:@"circle"])
         return [factory circleWithAttributes:attributes];
-    }
-    if ([elementName isEqualToString:@"ellipse"]) {
+    
+    if ([elementName isEqualToString:@"ellipse"])
         return [factory ellipseWithAttributes:attributes];
-    }
-    if ([elementName isEqualToString:@"rect"]) {
+    
+    if ([elementName isEqualToString:@"rect"])
         return [factory rectWithAttributes:attributes];
-    }
-    if ([elementName isEqualToString:@"path"]) {
+    
+    if ([elementName isEqualToString:@"path"])
         return [factory pathWithAttributes:attributes];
-    }
-    if ([elementName isEqualToString:@"polyline"]) {
+    
+    if ([elementName isEqualToString:@"polyline"])
         return [factory polylineWithAttributes:attributes];
-    }
-    if ([elementName isEqualToString:@"line"]) {
+    
+    if ([elementName isEqualToString:@"line"])
         return [factory lineWithAttributes:attributes];
-    }
+    
     return nil;
 }
 
@@ -266,13 +277,12 @@ CGPoint CGPointSubtractPoints(CGPoint point1, CGPoint point2)
     while (!commandScanner.isAtEnd) {
         [commandScanner scanUpToCharactersFromSet:knownCommands intoString:&command];
         NSString *fullCommand = [commandString substringWithRange:NSMakeRange(lastLocation, commandScanner.scanLocation - lastLocation)];
-        if (![fullCommand isEqualToString:@""]) {
+        if (![fullCommand isEqualToString:@""])
             [commandList addObject:fullCommand];
-        };
+        
         lastLocation = commandScanner.scanLocation;
-        if (!commandScanner.isAtEnd) {
+        if (!commandScanner.isAtEnd)
             commandScanner.scanLocation++;
-        }
     }
     return commandList;
 }
@@ -280,16 +290,9 @@ CGPoint CGPointSubtractPoints(CGPoint point1, CGPoint point2)
 - (NSArray *)commandListForPolylineString:(NSString *)polylineString;
 {
     NSMutableArray *commandList = NSMutableArray.new;
-    NSArray *pairs = [polylineString componentsSeparatedByString:@" "];
-    [pairs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if ([(NSString *)obj isEqualToString:@""]) {
-            return;
-        }
-        if (commandList.count == 0) {
-            [commandList addObject:[NSString stringWithFormat:@"M%@", obj]];
-        } else {
-            [commandList addObject:[NSString stringWithFormat:@"L%@", obj]];
-        }
+    [[polylineString componentsSeparatedByString:@" "] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([(NSString *)obj isEqualToString:@""]) return;
+        [commandList addObject:[NSString stringWithFormat: (commandList.count == 0) ? @"M%@" : @"L%@", obj]];
     }];
     return commandList;
 }
