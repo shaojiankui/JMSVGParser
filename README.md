@@ -1,7 +1,7 @@
 JMSVGParser
 ===========
 
-A simple SVG parser for iOS
+A simple SVG parser/document wrapper for iOS
 
 Supported shapes/features:
 
@@ -20,10 +20,13 @@ Shape Appearance:
 - Line Dashes
 - Line Join/Cap (Butt/Round/Miter)
 
+SVG Document Properties:
+- viewBox
+
 To use:
 
-1. Send an SVG document to the parser and get back an array of shapes.
-2. Draw each shape in your view's drawRect method.
+1. JMSVGDocument *svgDocument = [JMSVGDocument documentNamed:@"awesome_tiger"] to get a new JMSVGDocument.
+2. [svgDocument drawInCurrentContext] or [svgDocument image] to use.
 3. There is no step 3.
 
 Grab the example to see how it works. Cheers!
