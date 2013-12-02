@@ -14,7 +14,13 @@
 
 @interface JMSVGParser : NSObject
 
+@property (nonatomic) NSMutableArray *paths;
+@property (nonatomic) CGRect viewBox;
+
 // Parses SVG document with name and returns array of JMStyledPaths.
 + (NSArray *)parseFileNamed:(NSString *)fileName;
+
+- (id)initWithSVGDocument:(NSString *)path;
+- (BOOL)parse;
 
 @end
