@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6389D38D184BFB9100A90E99 /* JMSVGDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 6389D38C184BFB9100A90E99 /* JMSVGDocument.m */; };
 		638A3DC517F9280E00ABD616 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 638A3DC417F9280E00ABD616 /* Main_iPhone.storyboard */; };
 		638A3DC717F9282B00ABD616 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 638A3DC617F9282B00ABD616 /* Main_iPad.storyboard */; };
 		639C87AE17FA2EF9009D45A8 /* JMExampleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 639C87AD17FA2EF9009D45A8 /* JMExampleView.m */; };
@@ -25,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6389D38B184BFB9100A90E99 /* JMSVGDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JMSVGDocument.h; path = JMSVGParser/JMSVGDocument.h; sourceTree = "<group>"; };
+		6389D38C184BFB9100A90E99 /* JMSVGDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JMSVGDocument.m; path = JMSVGParser/JMSVGDocument.m; sourceTree = "<group>"; };
 		638A3DC417F9280E00ABD616 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
 		638A3DC617F9282B00ABD616 /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
 		639C87AC17FA2EF9009D45A8 /* JMExampleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMExampleView.h; sourceTree = "<group>"; };
@@ -125,6 +128,8 @@
 		63D00EFE17F9228F0003643B /* JMSVGParser */ = {
 			isa = PBXGroup;
 			children = (
+				6389D38B184BFB9100A90E99 /* JMSVGDocument.h */,
+				6389D38C184BFB9100A90E99 /* JMSVGDocument.m */,
 				63D00EF917F922810003643B /* JMSVGParser.h */,
 				63D00EFA17F922810003643B /* JMSVGParser.m */,
 				63D00EF517F922810003643B /* JMStyledPath.h */,
@@ -208,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6389D38D184BFB9100A90E99 /* JMSVGDocument.m in Sources */,
 				63D00EFD17F922810003643B /* JMSVGParser.m in Sources */,
 				63D00EFC17F922810003643B /* JMStyledPathFactory.m in Sources */,
 				63D00ECA17F9219C0003643B /* main.m in Sources */,

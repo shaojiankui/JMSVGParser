@@ -1,10 +1,11 @@
 
 #import "JMExampleView.h"
+#import "JMSVGDocument.h"
 #import "JMSVGParser.h"
 #import "JMStyledPath.h"
 
 @interface JMExampleView ()
-@property (nonatomic) NSArray *shapes;
+@property (nonatomic) JMSVGDocument *svgDocument;
 @end
 
 @implementation JMExampleView
@@ -13,7 +14,7 @@
 {
     if (!(self = [super initWithCoder:aDecoder])) return nil;
     
-    self.shapes = [JMSVGParser parseFileNamed:@"awesome_tiger"];
+    self.svgDocument = [JMSVGDocument documentNamed:@"awesome_tiger"];
     self.scale = 1.f;
     return self;
 }
@@ -23,9 +24,7 @@
     CGContextSetAllowsAntialiasing(UIGraphicsGetCurrentContext(), self.shouldAntialias);
     CGContextScaleCTM(UIGraphicsGetCurrentContext(), self.scale, self.scale);
     
-    for (JMStyledPath *styledPath in self.shapes) {
-        [styledPath drawStyledPath];
-    }
+    [self.svgDocument drawInCurrentContext];
 }
 
 @end
