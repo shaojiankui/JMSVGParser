@@ -1,3 +1,7 @@
+Update: I've moved most of this to a new and better project that's easier to use and just makes more sense. Check it out here:
+
+https://github.com/jmenter/JAMSVGImage
+
 JMSVGParser
 ===========
 
